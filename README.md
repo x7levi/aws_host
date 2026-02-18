@@ -32,3 +32,4 @@ python manage.py runserver
 ```
 
 Open http://127.0.0.1:8000/ to access the homepage.
+# aws_host

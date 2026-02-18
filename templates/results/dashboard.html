@@ -1,0 +1,13 @@
+{% extends 'results/base.html' %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Admin Dashboard</h3>
+      <ul class="list-group mt-3">
+        <li class="list-group-item"><a href="{% url 'results:add_student' %}">Add Student</a></li>
+        <li class="list-group-item"><a href="{% url 'results:student_list' %}">View Students</a></li>
+        <li class="list-group-item"><a href="{% url 'results:add_subject' %}">Add Subject</a></li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

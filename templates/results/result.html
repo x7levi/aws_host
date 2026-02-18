@@ -1,0 +1,45 @@
+{% extends 'results/base.html' %}
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <h4>Result for {{ student.name }}</h4>
+      <p><strong>Register No:</strong> {{ student.register_no }}</p>
+      <p><strong>Course:</strong> {{ student.course }} | <strong>Semester:</strong> {{ student.semester }}</p>
+
+      {% if subjects.count %}
+        <table class="table table-bordered mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Subject</th>
+              <th>Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for subject in subjects %}
+              <tr class="{% if subject.marks < 40 %}table-danger{% endif %}">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ subject.subject_name }}</td>
+                <td>{{ subject.marks }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="mt-3">
+          <p><strong>Total:</strong> {{ total }}</p>
+          <p><strong>Percentage:</strong> {{ percentage }}%</p>
+          <p><strong>Status:</strong>
+            {% if status == 'FAIL' %}
+              <span class="badge bg-danger">{{ status }}</span>
+            {% else %}
+              <span class="badge bg-success">{{ status }}</span>
+            {% endif %}
+          </p>
+        </div>
+      {% else %}
+        <div class="alert alert-warning">No subjects found for this student.</div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

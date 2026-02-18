@@ -1,0 +1,13 @@
+{% extends 'results/base.html' %}
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <h4>{% if edit %}Edit Subject{% else %}Add Subject{% endif %}</h4>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary">{% if edit %}Update{% else %}Add{% endif %}</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

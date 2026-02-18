@@ -1,0 +1,34 @@
+{% extends 'results/base.html' %}
+{% block content %}
+  <h3>Students</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Register No</th>
+        <th>Course</th>
+        <th>Semester</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in students %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ s.name }}</td>
+          <td>{{ s.register_no }}</td>
+          <td>{{ s.course }}</td>
+          <td>{{ s.semester }}</td>
+          <td>
+            <a class="btn btn-sm btn-success" href="{% url 'results:add_subject_for_student' s.id %}">Add Subject</a>
+            <a class="btn btn-sm btn-primary" href="{% url 'results:view_result' s.register_no %}">View</a>
+            <a class="btn btn-sm btn-danger" href="{% url 'results:delete_student' s.id %}" onclick="return confirm('Delete student?')">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="6">No students found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

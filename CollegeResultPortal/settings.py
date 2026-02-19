@@ -54,11 +54,17 @@ WSGI_APPLICATION = 'CollegeResultPortal.wsgi.application'
 # Database
 # Configure MySQL - update NAME/USER/PASSWORD/HOST/PORT as needed
 DATABASES = {
-    # Default: use SQLite for local development to avoid native MySQL client issues.
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'studentdb',
+        'USER': 'studentuser',
+        'PASSWORD': 'ALBIN9745672496',
+        'HOST': 'database-2.cs7qwui6wvas.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     }
+}
+
+
     # To use MySQL in production or if you have mysqlclient properly installed,
     # replace the default above with the following and update credentials:
     # 'default': {
